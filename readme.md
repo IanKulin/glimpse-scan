@@ -28,6 +28,10 @@ INFLUXDB_URL=http://100.106.90.55:8086
 POLLING_INTERVAL_MINUTES=5
 ```
 
-### Docker building
+### Build and run for testing
 `docker build --platform linux/amd64 -t ghcr.io/iankulin/glimpse_scan:latest .`
+`docker compose up`
 
+## to build and push for production
+- `docker build --platform linux/amd64 -t ghcr.io/iankulin/glimpse_scan:latest .`
+- `docker push ghcr.io/iankulin/glimpse_scan:latest`
