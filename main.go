@@ -27,7 +27,6 @@ import (
 
 	influxdb2 "github.com/influxdata/influxdb-client-go/v2"
 	"github.com/influxdata/influxdb-client-go/v2/api"
-	"github.com/joho/godotenv"
 )
 
 
@@ -48,17 +47,22 @@ type ServerConfig struct {
 
 
 func main() {
-	// Load environment variables from .env file
-	if err := godotenv.Load(); err != nil {
-		log.Fatal("Error loading .env file:", err)
-	}
-	token := os.Getenv("INFLUXDB_ADMIN_TOKEN")
-	org := os.Getenv("INFLUXDB_ORG")
-	bucket := os.Getenv("INFLUXDB_BUCKET")
-	url := os.Getenv("INFLUXDB_URL")
 
-	// load "POLLING_INTERVAL_MINUTES" and convert it to an integer
+    org := os.Getenv("INFLUXDB_ORG")
+    bucket := os.Getenv("INFLUXDB_BUCKET")
+    token := os.Getenv("INFLUXDB_ADMIN_TOKEN")
+    url := os.Getenv("INFLUXDB_URL")
 	pollingIntervalStr := os.Getenv("POLLING_INTERVAL_MINUTES")
+
+    if org == "" || bucket == "" || token == "" || url == "" || pollingIntervalStr == "" {
+        log.Fatal("Missing required environment variables")
+    }
+
+    fmt.Println("InfluxDB Organization:", org)
+    fmt.Println("InfluxDB Bucket:", bucket)
+    fmt.Println("InfluxDB URL:", url)
+    fmt.Println("Polling Interval (minutes):", pollingIntervalStr)
+
 	pollingInterval, err := strconv.Atoi(pollingIntervalStr)
 	if err != nil {
 		log.Fatalf("Error parsing POLLING_INTERVAL_MINUTES: %v", err)

@@ -1,0 +1,13 @@
+services:
+  glimpse-scan:
+    image: ghcr.io/iankulin/glimpse_scan:latest
+    container_name: glimpse-scan
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./data:/app/data  # Bind mount the local 'data' directory
+    restart: unless-stopped
+    env_file:
+      - .env  # Import environment variables from the .env file
+
