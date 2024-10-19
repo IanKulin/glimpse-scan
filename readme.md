@@ -33,5 +33,5 @@ POLLING_INTERVAL_MINUTES=5
 `docker compose up`
 
 ### Build and push for production
-- `docker build --platform linux/amd64 -t ghcr.io/iankulin/glimpse_scan:latest .`
-- `docker push ghcr.io/iankulin/glimpse_scan:latest`
+`docker build --platform linux/amd64 -t ghcr.io/iankulin/glimpse_scan:latest .`
+`docker push ghcr.io/iankulin/glimpse_scan:latest`
