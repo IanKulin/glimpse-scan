@@ -1,0 +1,10 @@
+[
+    {
+      "name": "ct300-forgejo",
+      "url": "http://192.168.100.55:10321/vitals"
+    },
+    {
+      "name": "ct329-uptimekuma",
+      "url": "http://192.168.100.53:10321/vitals"
+    }
+  ]
